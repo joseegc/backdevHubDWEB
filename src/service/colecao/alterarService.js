@@ -1,8 +1,8 @@
-import { alterar } from '../../repository/colecaoRepository.js'
+import { alterarPorId } from '../../repository/colecaoRepository.js'
 
 
 export default async function alterarService(id, colecao) {
-    let linhasAfetadas = await alterar(id, colecao);
+    let linhasAfetadas = await alterarPorId(id, colecao);
     return linhasAfetadas;
 }
 

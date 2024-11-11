@@ -1,0 +1,35 @@
+-- Criação do banco de dados
+CREATE DATABASE devhubdb;
+
+-- Seleciona o banco de dados devhubdb para uso
+USE devhubdb;
+
+-- Criação da tabela login
+CREATE TABLE tb_login (
+    id_login INT PRIMARY KEY  auto_increment,
+    email VARCHAR(255),
+    senha VARCHAR(255)
+);
+
+-- Criação da tabela colecao
+CREATE TABLE tb_colecao (
+    id_colecao INT PRIMARY KEY  auto_increment,
+    nome VARCHAR(255),
+    descricao VARCHAR(255),
+    data_criacao DATE
+);
+
+-- Criação da tabela material
+CREATE TABLE tb_material (
+    id_material INT PRIMARY KEY  auto_increment,
+    nome VARCHAR(255),
+    descricao VARCHAR(255),
+    url VARCHAR(255),
+    data_criacao DATE,
+    fk_id_colecao INT,
+    FOREIGN KEY (fk_id_colecao) REFERENCES tb_colecao(id_colecao)
+);
+
+INSERT INTO tb_login (email, senha) VALUES ("email@email.com", "senha");
+SELECT * FROM tb_login;
+

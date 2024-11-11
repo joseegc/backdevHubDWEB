@@ -1,6 +1,6 @@
 import inserirService from "../service/colecao/inserirService.js";
 import consultarService from "../service/colecao/consultarService.js";
-import excluirService from "../service/colecao/excluirService.js";
+import deletarService from "../service/colecao/deletarService.js";
 import consultarPorIdService from "../service/colecao/consultarPorIdService.js";
 import alterarService from "../service/colecao/alterarService.js";
 
@@ -13,8 +13,9 @@ const endpoints = Router();
 endpoints.post('/colecao', autenticar, async (req, resp) => {
     try {
         let colecao = req.body;
-
-        let id = await inserirService(colecao);
+        const dataCriacao = new Date().toISOString().split('T')[0]; // Data atual em formato ISO 8601
+        console.log(dataCriacao)
+        let id = await inserirService(colecao, dataCriacao);
 
         resp.send({
             novoId: id
@@ -76,11 +77,11 @@ endpoints.get('/colecao/:id', autenticar, async (req, resp) => {
 
 
 
-endpoints.delete('/colecao/:id', async (req, resp) => {
+endpoints.delete('/colecao/:id', autenticar, async (req, resp) => {
     try {
         let id = req.params.id;
 
-        let linhasAfetadas = await excluirService(id);
+        let linhasAfetadas = await deletarService(id);
         resp.status(204).send();
     }
     catch (err) {
