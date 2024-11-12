@@ -27,7 +27,7 @@ CREATE TABLE tb_material (
     url VARCHAR(255),
     data_criacao DATE,
     fk_id_colecao INT,
-    FOREIGN KEY (fk_id_colecao) REFERENCES tb_colecao(id_colecao)
+    FOREIGN KEY (fk_id_colecao) REFERENCES tb_colecao(id_colecao) ON DELETE CASCADE
 );
 
 INSERT INTO tb_login (email, senha) VALUES ("email@email.com", "senha");

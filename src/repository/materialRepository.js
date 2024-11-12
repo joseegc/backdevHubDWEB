@@ -43,7 +43,7 @@ export async function consultarMateriaisDaColecao(idColecao) {
     `
 
     let [registros] = await con.query(comando, [idColecao]);
-    return "ooi";
+    return registros;
 }
 
 export async function consultarPorId(idParaConsultar) {

@@ -27,15 +27,13 @@ export async function consultar() {
         colecao.data_criacao AS dataCriacao
     FROM 
         tb_colecao colecao
+    ORDER BY
+        colecao.id_colecao
+        DESC
     `
 
     let [registros] = await con.query(comando);
 
-    registros.forEach(registro => {
-        console.log(registro.idColecao)
-        console.log(consultarMateriaisDaColecao(registro.idColecao))
-        registro.materiais = consultarMateriaisDaColecao(registro.idColecao)
-    });
     return registros;
 }
 
