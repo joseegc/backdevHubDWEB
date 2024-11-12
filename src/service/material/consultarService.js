@@ -1,7 +1,7 @@
-import { consultar } from "../../repository/materialRepository.js";
+import { consultarMateriaisDaColecao } from "../../repository/materialRepository.js";
 
-export default async function consultarService() {
-    let registros = await consultar();
+export default async function consultarService(idColecao) {
+    let registros = await consultarMateriaisDaColecao(idColecao);
     return registros;
 }
 

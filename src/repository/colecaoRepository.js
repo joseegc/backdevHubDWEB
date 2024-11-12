@@ -1,4 +1,5 @@
 import con from "./connection.js";
+import { consultarMateriaisDaColecao } from "./materialRepository.js";
 
 export async function inserir(colecao, dataCriacao) {
     const comando = `
@@ -29,6 +30,12 @@ export async function consultar() {
     `
 
     let [registros] = await con.query(comando);
+
+    registros.forEach(registro => {
+        console.log(registro.idColecao)
+        console.log(consultarMateriaisDaColecao(registro.idColecao))
+        registro.materiais = consultarMateriaisDaColecao(registro.idColecao)
+    });
     return registros;
 }
 

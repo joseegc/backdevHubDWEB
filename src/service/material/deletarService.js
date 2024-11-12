@@ -1,7 +1,7 @@
-import { deletar } from "../../repository/materialRepository.js";
+import { deletarPorId } from "../../repository/materialRepository.js";
 
 
 export default async function deletarService(id) {
-    let linhasAfetadas = await deletar(id);
+    let linhasAfetadas = await deletarPorId(id);
     return linhasAfetadas;
 }

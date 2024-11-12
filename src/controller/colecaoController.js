@@ -37,7 +37,7 @@ endpoints.put('/colecao/:id', autenticar, async (req, resp) => {
         let linhasAfetadas = await alterarService(id, colecao);
 
         resp.send({
-            novoId: id
+            idAlterado: id
         })
     }
     catch (err) {
@@ -82,7 +82,10 @@ endpoints.delete('/colecao/:id', autenticar, async (req, resp) => {
         let id = req.params.id;
 
         let linhasAfetadas = await deletarService(id);
-        resp.status(204).send();
+
+        resp.send({
+            idDeletado: id
+        })
     }
     catch (err) {
         resp.status(400).send({
