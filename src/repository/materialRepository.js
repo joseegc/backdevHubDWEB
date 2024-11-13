@@ -71,7 +71,7 @@ export async function alterarPorId(idParaAlterar, corpoParaAlterar) {
     SET
         nome = ?, 
         descricao = ?,
-        url = ?,
+        url = ?
     WHERE 
         id_material = ?
     `
